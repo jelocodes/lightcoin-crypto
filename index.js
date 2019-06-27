@@ -23,7 +23,7 @@ class Transaction {
     if (this.isAllowed()) {
       this.time = new Date();
       this.account.addTransaction(this);
-      return `Deposited ${this.amount}`;
+      return `Success`;
     } else {
       return 'Insufficient funds to complete transaction';
     }
