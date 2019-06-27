@@ -6,7 +6,7 @@ class Account {
 
   get balance() {
     if (this.transactions.length === 0) return 0;
-    return Array.from(this.transactions).reduce((accumulator, transaction) => accumulator + transaction.value(), 0);
+    return Array.from(this.transactions).reduce((accumulator, transaction) => accumulator + transaction.value, 0);
   }
 
   addTransaction(transaction) {
@@ -31,7 +31,7 @@ class Transaction {
 }
 
 class Deposit extends Transaction {
-  value() {
+  get value() {
     return this.amount;
   }
 
@@ -41,8 +41,8 @@ class Deposit extends Transaction {
 }
 
 class Withdrawal extends Transaction {
-  value() {
-    return -1 * this.amount;
+  get value() {
+    return -this.amount;
   }
 
   isAllowed(){
